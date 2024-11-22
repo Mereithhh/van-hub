@@ -13,6 +13,7 @@
 - 🔐 管理员后台
 - ⚡️ 快速部署
 - 🎯 支持自定义网站标题和图标
+- 📝 优雅的失败提示
 
 ### 工具详情
 
@@ -27,25 +28,22 @@
 ![tool_manage](img/tool_manage.png)
 ![settings](img/settings.png)
 
+## 失败提示
+
+![error](img/error.png)
+
 ## 部署
 
 ### Docker 部署
 
-1. 创建 docker-compose.yml:
+1. 直接运行
 
-```yaml
-version: '3'
-services:
-van-hub:
-image: mereith/van-hub:latest
-container_name: van-hub
-restart: always
-ports:
-"3000:3000"
-volumes:
-./data:/app/data
-environment:
-JWT_SECRET=your_jwt_secret # 修改为你的 JWT 密钥
+```bash
+docker run -d \
+--name van-hub \
+-p 3000:3000 \
+-v $(pwd)/data:/app/data \
+mereith/van-hub:latest
 ```
 
 3. 访问 http://localhost:3000
@@ -73,6 +71,24 @@ npm install
 
 ```bash
 npm run dev
+```
+
+## FAQ
+
+### 备份迁移
+
+本项目的全部数据都存在一个 sqlite 数据库文件中，你只需要将这个文件备份，就可以迁移到其他机器上。
+
+```bash
+# 备份
+docker cp van-hub:/app/data/data.db ./data/data.db
+
+# 新启动的时候挂载上这个文件到 /app/data 目录就行了
+docker run -d \
+--name van-hub \
+-p 3000:3000 \
+-v $(pwd)/data:/app/data \
+mereith/van-hub:latest
 ```
 
 ## 技术栈
