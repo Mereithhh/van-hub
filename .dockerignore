@@ -1,0 +1,7 @@
+node_modules
+.next
+.env
+.env.local
+.env.development
+build.sh
+data.db
