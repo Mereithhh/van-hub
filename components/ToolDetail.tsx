@@ -57,16 +57,9 @@ export function ToolDetail({ tool, allTools }: ToolDetailProps) {
               title={tool.name}
               onLoad={(e) => {
                 try {
-                  const iframe = e.target as HTMLIFrameElement;
-                  const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
-
-                  if (!iframeDoc || iframeDoc.title.toLowerCase().includes('404')) {
-                    setLoadError(true);
-                  } else {
-                    setIsLoading(false);
-                  }
+                  setIsLoading(false);
                 } catch (err) {
-                  console.error('访问 iframe 内容时出错:', err);
+                  console.error('iframe 加载出错:', err);
                   setLoadError(true);
                 }
               }}
