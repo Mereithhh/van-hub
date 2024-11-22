@@ -292,7 +292,8 @@ export default function ToolsAdmin() {
             <input
               type="text"
               placeholder="管理员用户名"
-              value={settings.username}
+              value={"admin"}
+              disabled
               onChange={(e) => setSettings({ ...settings, username: e.target.value })}
               className="mb-2 w-full p-2 border rounded"
             />
