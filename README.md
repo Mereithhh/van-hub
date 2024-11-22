@@ -39,10 +39,12 @@
 1. 直接运行
 
 ```bash
+# JWT_SECRET 设置成一个随机的长一些的字符串
 docker run -d \
 --name van-hub \
 -p 3000:3000 \
 -v $(pwd)/data:/app/data \
+-e JWT_SECRET=van-hub-default-secret-key \
 mereith/van-hub:latest
 ```
 
@@ -84,10 +86,12 @@ npm run dev
 docker cp van-hub:/app/data/data.db ./data/data.db
 
 # 新启动的时候挂载上这个文件到 /app/data 目录就行了
+# JWT_SECRET 设置成一个随机的长一些的字符串
 docker run -d \
 --name van-hub \
 -p 3000:3000 \
 -v $(pwd)/data:/app/data \
+-e JWT_SECRET=van-hub-default-secret-key \
 mereith/van-hub:latest
 ```
 
