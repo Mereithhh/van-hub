@@ -1,6 +1,6 @@
 const path = require('path')
 const Database = require('better-sqlite3')
-const dbPath = path.join(process.cwd(), './data/data.db')
+const dbPath = path.join(process.cwd(), 'data/data.db')
 const db = new Database(dbPath)
 
 // 创建必要的表和默认管理员用户
