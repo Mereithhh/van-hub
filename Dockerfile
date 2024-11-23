@@ -38,7 +38,7 @@ ENV NODE_ENV=production
 # ENV NEXT_TELEMETRY_DISABLED=1
 
 COPY --from=builder /app/public ./public
-RUN mkdir -p data && mkdir -p public
+RUN mkdir data && mkdir public
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
