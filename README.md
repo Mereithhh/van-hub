@@ -2,7 +2,7 @@
 
 <b>收集你的零零散散。</b>
 
-作为一个折腾玩家，怎么能没有一款手机你所有网站的汇总平台呢？无需跳转 all in one! 也很适合作为团队内部工具平台。
+作为一个折腾玩家，怎么能没有一款收集你所有网站的汇总平台呢？无需跳转 all in one! 也很适合作为团队内部工具平台。
 
 > 在线体验 [https://van-hub-demo.mereith.com](https://van-hub-demo.mereith.com)
 
