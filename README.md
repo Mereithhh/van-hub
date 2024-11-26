@@ -71,6 +71,14 @@ git clone https://github.com/mereithhh/van-hub.git
 npm install
 ```
 
+3. 初始化数据库
+
+查看 `init-db.js` 文件，根据需要修改默认管理员账号密码。
+
+```shell
+node init-db.js
+```
+
 3. 运行:
 
 ```bash
