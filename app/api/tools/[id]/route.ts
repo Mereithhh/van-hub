@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import db from '@/lib/db'
 import jwt from 'jsonwebtoken'
+import { jwtSecret } from '@/lib/jwt'
 
 export async function DELETE(request: Request, { params }: { params: { id: string } }) {
   const token = request.headers.get('Authorization')?.split(' ')[1]
@@ -9,7 +10,7 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
   }
 
   try {
-    jwt.verify(token, process.env.JWT_SECRET!)
+    jwt.verify(token, jwtSecret)
   } catch (error) {
     return NextResponse.json({ error: 'Invalid token' }, { status: 401 })
   }
@@ -27,7 +28,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
   }
 
   try {
-    jwt.verify(token, process.env.JWT_SECRET!)
+    jwt.verify(token, jwtSecret)
   } catch (error) {
     return NextResponse.json({ error: '无效的令牌' }, { status: 401 })
   }

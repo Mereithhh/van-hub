@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import db from '@/lib/db'
+import { jwtSecret } from '@/lib/jwt'
 
 export async function POST(request: Request) {
   const { username, password } = await request.json()
@@ -9,7 +10,7 @@ export async function POST(request: Request) {
   const user = db.prepare('SELECT * FROM users WHERE username = ?').get(username)
 
   if (user && bcrypt.compareSync(password, user.password)) {
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, { expiresIn: '1h' })
+    const token = jwt.sign({ id: user.id }, jwtSecret, { expiresIn: '1h' })
     return NextResponse.json({ token })
   } else {
     return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 })
@@ -24,7 +25,7 @@ export async function GET(request: Request) {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!)
+    const decoded = jwt.verify(token, jwtSecret)
     return NextResponse.json({
       isAuthenticated: true,
       userId: decoded.id

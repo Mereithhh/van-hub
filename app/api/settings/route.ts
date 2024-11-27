@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import db from '@/lib/db'
+import { jwtSecret } from '@/lib/jwt'
 
 // 获取设置的 GET 方法保持不变,但移除 token 验证,允许公开访问
 export async function GET() {
@@ -34,7 +35,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    jwt.verify(token, process.env.JWT_SECRET!)
+    jwt.verify(token, jwtSecret)
   } catch (error) {
     return NextResponse.json({ error: '无效的令牌' }, { status: 401 })
   }

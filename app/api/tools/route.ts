@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import db from '@/lib/db'
 import jwt from 'jsonwebtoken'
+import { jwtSecret } from '@/lib/jwt'
 
 export async function GET() {
   const tools = db.prepare('SELECT * FROM tools').all()
@@ -18,7 +19,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    jwt.verify(token, process.env.JWT_SECRET!)
+    jwt.verify(token, jwtSecret)
   } catch (error) {
     return NextResponse.json({ error: 'Invalid token' }, { status: 401 })
   }
