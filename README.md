@@ -4,7 +4,8 @@
 
 作为一个折腾玩家，怎么能没有一款收集你所有网站的汇总平台呢？无需跳转 all in one! 也很适合作为团队内部工具平台。
 
-> 在线体验 [https://van-hub-demo.mereith.com](https://van-hub-demo.mereith.com)
+> 在线体验 [https://van-hub-demo.mereith.com](https://van-hub-demo.mereith.com)  
+> 如果你想要一个带图标的版本，可以看看我的另一个项目： [https://github.com/mereithhh/van-nav](https://github.com/mereithhh/van-nav)
 
 ## 功能特性
 
